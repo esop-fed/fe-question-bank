@@ -7,25 +7,32 @@
 * 初衷：希望促进团队成员学习讨论，达成技术共识，推动技术进步
 <!-- * 纠偏：Interview并非本项目的目标，面试水平只是技术提升后的副产品 -->
 
-<!-- ### Preview
+#### Preview
 
-https://esop-fed.github.io/ani-css -->
+https://esop-fed.github.io/fe-question-bank/
 
-<!-- ### Useage
+#### Useage
 
 ```bash
-git clone https://github.com/esop-fed/ani-css.git
+git clone git@github.com:esop-fed/fe-question-bank.git
 npm i
-npm start
+docsify serve docs
 ```
-然后打开http://localhost:3030
+然后打开http://localhost:3000
 
-### 基于项目创建自己的分支
-
-以book项目为例
+#### Structure
 
 ```bash
-git checkout -b book/wlxm origin/gh-pages
+.
+├── docs // 项目文件
+│   ├── _coverpage.md // 封面md
+│   ├── _media // 静态资源文件
+│   ├── _navbar.md // 导航配置md
+│   ├── _sidebar.md // 侧边栏配置md
+│   ├── index.html // 入口
+│   └── questions // 题库，每道题都是一个md
+│       └── basic-grammar // 分类文件夹
+│           └── program1.md // 题目
+├── README.md // 项目说明
+└── package.json
 ```
-
-制作完成后提交上去然后提个pull request到niannings -->
