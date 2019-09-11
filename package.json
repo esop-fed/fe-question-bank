@@ -1,0 +1,22 @@
+{
+  "name": "fe-question-bank",
+  "version": "1.0.0",
+  "author": "yuchi",
+  "description": "Front-end Question Bank of esop-fed.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/esop-fed/fe-question-bank.git"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/esop-fed/fe-question-bank/issues"
+  },
+  "homepage": "https://github.com/esop-fed/fe-question-bank#readme",
+  "dependencies": {
+    "docsify-cli": "^4.3.0"
+  }
+}
