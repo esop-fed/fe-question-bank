@@ -1,4 +1,4 @@
-![logo](_media/esop-fe-logo.jpeg)
+![logo](_media/esop-fed-logo.png)
 
 ## fe-question-bank
 ##### esop-fed前端团队
