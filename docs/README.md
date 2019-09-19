@@ -1,3 +1,14 @@
-# Headline
+# fe-question-bank
+##### esop-fed前端团队
+> Front-end Question Bank of esop-fed.
 
-> An awesome project.
+> 项目主持人：Johninch
+
+
+### 项目推进规则
+- 每个项目周期由各个组员分别选定一道前端题目，总共 5 道
+- 每个小伙伴分别做完 5 道题目，最后通过讨论得到更优解
+- 最后由主持人负责归档整理题目
+- 组员对于感兴趣的题目可以自行作答，提PR给主持人即可
+- 题库的丰富有赖于各位成员
+
