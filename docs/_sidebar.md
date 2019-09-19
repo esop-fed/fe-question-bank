@@ -1,3 +1,10 @@
+
+- **本周题目**
+    - [完美实现深拷贝](/questions/basic-grammar/deepClone)
+    - [深度查询](/questions/basic-grammar/deepQuery)
+    - [数组扁平化](/questions/basic-grammar/flattenArray)
+    - [链式调用](/questions/basic-grammar/chainMethods)
+    - [异步函数promise化(处理回调地狱)](/questions/basic-grammar/callbackHell)
 - **基础语法语句**
     - [指出下面代码的执行结果【中易】](/questions/basic-grammar/program1)
     - [回答至少两种判断给定值是否为数组的方法【易】](/questions/basic-grammar/)
@@ -10,7 +17,6 @@
     - [实现斐波那契数列【易】](/questions/basic-grammar/)
     - [实现多维数组扁平化【易】](/questions/basic-grammar/)
     - [将一维数组中连续相同的数字转换成二维【易】](/questions/basic-grammar/)
-    - [实现深拷贝，尽可能完美实现【中】](/questions/basic-grammar/)
     - [编写一段js代码，实现“回到顶部”动画效果，要求尽可能的动画流畅]()
     - [编写js，要求在给定的节点(target)上，实现鼠标移动时，跟随鼠标实时出现表示鼠标主要移动方向的文字：上/下/左/右]()
     - [编写js，将给定的已知节点(img#icon)添加上一个包装节点(div.icon-wrapper)，要求保持该节点对象不变（即不可克隆或者破坏节点上绑定的任意属性值和事件）]()

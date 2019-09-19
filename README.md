@@ -16,7 +16,7 @@ https://esop-fed.github.io/fe-question-bank/
 ```bash
 git clone git@github.com:esop-fed/fe-question-bank.git
 npm i
-docsify serve docs
+docsify serve docs 或者 npm start
 ```
 然后打开http://localhost:3000
 
