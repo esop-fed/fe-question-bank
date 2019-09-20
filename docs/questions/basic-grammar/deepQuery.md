@@ -47,7 +47,30 @@ johninch:
 ----
 febcat:
 
+```javascript
+const get = (obj, path, defaultBack= undefined) => {
+    if (typeof obj !== 'object') {
+        console.error(`get: require object, but ${typeof obj}`)
+        return defaultBack
+    }
 
+    const rule = Array.isArray(path) ? path.join(',').replace(/\,/g, '.') : path
+    const preRule = rule.replace(/\[(\d+)\]/g, (match, $1, index) => {
+        return index ? '.' + $1 : $1
+    }).split('.')
+    const nextRule = preRule.slice(1).join('.')
+    const key = preRule[0]
+
+    return obj.hasOwnProperty(key)
+        ? nextRule
+        ? get(obj[key], nextRule)
+        : /(\[\])|(\{\})/g.test(JSON.stringify(obj[key]))
+            ? defaultBack
+            : obj[key]
+        : defaultBack
+    }
+}
+```
 ----
 dannisi:
 
