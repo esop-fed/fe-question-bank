@@ -90,7 +90,15 @@ Xmtd:
 
 ----
 niannings:
-
+```js
+const promisify = fnWithCallback =>
+    (...args) => new Promise((resolve, reject) =>
+        fnWithCallback(
+            ...args,
+            (err, result) => err ? reject(err) : resolve(result)
+        )
+    )
+```
 
 ----
 最后总结：
