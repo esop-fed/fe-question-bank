@@ -71,9 +71,8 @@ https://segmentfault.com/q/1010000004342477
 ```javascript
 class Chain {
     constructor() {
-      this.dom = document.createElement('div')
+      this.dom = null
       this.fontColor = '#000'
-      this.banckgroundColor = '#fff'
       this._init()
     }
 
@@ -90,7 +89,6 @@ class Chain {
       const newDom = document.createElement(tagName)
 
       newDom.style.color = this.fontColor
-      newDom.style.background = this.banckgroundColor
       newDom.style.width = 100 + 'px'
       newDom.style.height = 100 + 'px'
       this.dom = newDom
@@ -110,20 +108,6 @@ class Chain {
 
     color(c) {
       return c ? this._setColor(c) : this._getColor()
-    }
-
-    _setBackground(c) {
-      this.dom.style.background = this.banckgroundColor = c
-
-      return this
-    }
-
-    _getBackground() {
-      return this.banckgroundColor
-    }
-
-    background(c) {
-      return c ? this._setBackground(c) : this._getBackground()
     }
 
     show() {
