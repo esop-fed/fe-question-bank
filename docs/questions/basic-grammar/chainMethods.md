@@ -152,6 +152,39 @@ class Chain {
 ----
 ##### niannings:
 
+```js
+/**
+ * 将一个对象转化为可链式调用的对象
+ * @param {object} obj 对象
+*/
+const chainify = obj =>
+  new Proxy(Object(obj), {
+    get(o, p, r) {
+      if (typeof o[p] === 'function') {
+        return (...args) => {
+          o[p](...args);
+
+          return r
+        }
+      }
+
+      return Reflect.get(o, p, r);
+    }
+  });
+
+// 测试
+const a = {
+  p: 100,
+  foo() {
+    console.log(1)
+  },
+  bar(x) {
+    console.log(x + this.p)
+  }
+}
+
+chainify(a).foo().bar(100)
+```
 
 ----
 ##### 最后总结：
