@@ -12,6 +12,26 @@ febcat:
 
 ----
 dannisi:
+``` javascript
+var $ = function(id) {
+	var dom = document.getElementById(id);
+	return new $2(dom);
+}
+
+var $2 = function(dom) {
+	this.dom = dom
+};
+
+$2.prototype = {
+	addClass : function(className){
+		if(this.dom){
+			this.dom.setAttribute('class', className)
+		}
+		return this
+	}
+}
+
+```
 
 
 ----
