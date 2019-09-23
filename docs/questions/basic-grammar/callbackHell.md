@@ -69,13 +69,6 @@ const writeFile = promisify(fs.writeFile);
        console.error(error);
    }
 })()
-readFile('a.txt')
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error(error);
-    })
 ```
 
 ----
