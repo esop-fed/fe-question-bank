@@ -3,7 +3,7 @@
 
 例如：```node```中```fs```模块的读文件```API```: ```fs.readFile(path[, options], callback)```；写文件```fs.writeFile(path[, options], callback)```。
 
-当我们要对a.txt文件进行读取，写入'hello world'，再读取b.txt并将b.txt内容追加到a.txt：  
+当我们要对a.txt文件进行读取，写入'hello world'，再读取b.txt并将b.txt内容追加到a.txt：
 **调用原生API写法如下：**
 ```js
 import * as fs from 'fs';
@@ -64,7 +64,7 @@ const writeFile = promisify(fs.writeFile);
 
         data = await readFile('b.txt');
 
-        await writeFile('a.txt', data);        
+        await writeFile('a.txt', data);
    } catch (error) {
        console.error(error);
    }
@@ -105,7 +105,7 @@ const promisify = (fuc) => {
 ```
 
 ----
-##### dannisi:
+##### Caleb:
 
 
 ----

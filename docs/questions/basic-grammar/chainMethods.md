@@ -1,6 +1,6 @@
 
 > 实现类似Jquery的链式调用
-> 例如：$('#div').addClass('add-class')
+> 例如：$('div').addClass('add-class')
 
 ----
 ##### johninch:
@@ -52,14 +52,14 @@ function add(num){
         }
 
     }
-    
+
     tempFun.valueOf = function() {
         return sum
     }
     tempFun.toString = function() {
         return sum + ''
     }
-    
+
     return tempFun
 }
 ```
@@ -71,9 +71,8 @@ https://segmentfault.com/q/1010000004342477
 ```javascript
 class Chain {
     constructor() {
-      this.dom = document.createElement('div')
+      this.dom = null
       this.fontColor = '#000'
-      this.banckgroundColor = '#fff'
       this._init()
     }
 
@@ -90,7 +89,6 @@ class Chain {
       const newDom = document.createElement(tagName)
 
       newDom.style.color = this.fontColor
-      newDom.style.background = this.banckgroundColor
       newDom.style.width = 100 + 'px'
       newDom.style.height = 100 + 'px'
       this.dom = newDom
@@ -112,20 +110,6 @@ class Chain {
       return c ? this._setColor(c) : this._getColor()
     }
 
-    _setBackground(c) {
-      this.dom.style.background = this.banckgroundColor = c
-
-      return this
-    }
-
-    _getBackground() {
-      return this.banckgroundColor
-    }
-
-    background(c) {
-      return c ? this._setBackground(c) : this._getBackground()
-    }
-
     show() {
       document.querySelector('body').appendChild(this.dom)
 
@@ -141,7 +125,30 @@ class Chain {
 ```
 
 ----
-##### dannisi:
+##### Caleb:
+
+``` javascript
+var $ = function(id) {
+	var dom = document.getElementById(id);
+	return new $2(dom);
+}
+
+var $2 = function(dom) {
+	this.dom = dom
+};
+
+$2.prototype = {
+	addClass : function(className){
+		if(this.dom){
+			this.dom.setAttribute('class', className)
+		}
+		return this
+	}
+}
+
+$('div').addClass('ppp')
+
+```
 
 
 ----

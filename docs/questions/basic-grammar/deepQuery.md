@@ -60,8 +60,34 @@ const get = (obj, path, defaultBack= undefined) => {
 }
 ```
 ----
-##### dannisi:
+##### Caleb:
+``` javascript
+var IsEmptys = value => {
+  if(value === undefined || value === null || typeof value === 'object' && (Object.keys(value) && Object.keys(value).length === 0 || value.length === 0)){
+    return true
+  }
+  return false
+}
 
+function get(target, rule){
+  const formatRule = typeof rule === 'string' ? rule.replace(/\[|\]|\./g, '').split('') : rule;
+  const len = formatRule.length;
+  const returnValue = target[formatRule[0]];
+  if(IsEmptys(returnValue)){
+      return undefined;
+  }
+
+  if(len === 1){
+      console.log('ooooo', returnValue)
+      return returnValue
+  }
+
+  formatRule.shift();
+  get(returnValue, formatRule);
+
+}
+
+```
 
 ----
 ##### Xmtd:
