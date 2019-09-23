@@ -114,7 +114,8 @@ const promisify = (fuc) => {
 
 
 ----
-niannings:
+##### niannings:
+
 ```js
 const promisify = fnWithCallback =>
     (...args) => new Promise((resolve, reject) =>
@@ -124,8 +125,6 @@ const promisify = fnWithCallback =>
         )
     )
 ```
-##### niannings:
-
 
 ----
 ##### 最后总结：
