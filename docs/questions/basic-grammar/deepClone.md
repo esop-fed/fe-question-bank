@@ -7,16 +7,14 @@
 ##### febcat:
 
 ```javascript
-const deepClone = (obj) => {
+const deepClone = obj => {
     if (typeof obj !== 'object') {
       console.error(`deepClone: require object, but ${typeof obj}`)
       return
     }
 
     if (Array.isArray(obj)) {
-      return obj.reduce((arr, item) => {
-        return arr.concat(item)
-      }, [])
+      return obj.reduce((arr, item) => return arr.concat(item), [])
     }
 
     return Object.entries(obj).filter(item => obj.hasOwnProperty(item[0])).reduce((newObj, [key, value]) => {
@@ -55,13 +53,33 @@ function deepClone(origin){
 
 ----
 ##### Xmtd:
-
+```js
+function cloneDeep(target) {
+    if (!target || typeof target !== 'object') {
+        return target;
+    }
+    
+    let result = Array.isArray(target) ? [] : {};
+    
+    for (let name in target) {
+        if (target.hasOwnProperty(name)) {
+            if (typeof target[name] === 'object') {
+                result[name] = cloneDeep(target[name]);
+            } else {
+                result[name] = target[name]
+            }
+        }
+    }
+    
+    return result;
+}
+```
 
 
 ----
 ##### niannings:
 
-网上的深拷贝太多了，几乎如出一辙  
+网上的深拷贝太多了，几乎如出一辙
 不一样的深拷贝，原创！
 
 ```js

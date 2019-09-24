@@ -79,29 +79,26 @@ const writeFile = promisify(fs.writeFile);
 ##### febcat:
 
 ```javascript
-const promisify = (fuc) => {
-  return (file, dataBuffer) => {
-    return new Promise((resolve, reject) => {
-      if (dataBuffer) { // write
-        fuc(file, dataBuffer, err => {
-          if(err) {
-            console.log('write error', err)
+const promisify = fuc => (file, dataBuffer) =>
+  new Promise(resolve =>
+    if (dataBuffer) { // write
+      fuc(file, dataBuffer, err => {
+        if(err) {
+          console.log('write error', err)
 
-            throw error
-          } else resolve()
-        })
-      } else { // reade
-        fuc(file, (err, data) => {
-          if (err) {
-            console.log('read error', err)
+          throw error
+        } else resolve()
+      })
+    } else { // reade
+      fuc(file, (err, data) => {
+        if (err) {
+          console.log('read error', err)
 
-            throw error
-          } else resolve(data)
-        })
-      }
-    })
-  }
-}
+          throw error
+        } else resolve(data)
+      })
+    }
+  )
 ```
 
 ----
@@ -110,7 +107,20 @@ const promisify = (fuc) => {
 
 ----
 ##### Xmtd:
-
+```js
+let promisify = function (fn) {
+    return function (...args) {
+        return new Promise((resolve, reject) => {
+            fn(...args, (error, data) => {
+                if (error) {
+                    reject(error);
+                }
+                resolve(data);
+            })
+        })
+    }
+};
+```
 
 
 ----
