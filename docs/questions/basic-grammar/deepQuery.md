@@ -54,6 +54,33 @@ dannisi:
 
 ----
 Xmtd:
+```js
+  function get(target, rule, defaultBack) {
+    let ruleType = typeof rule === 'string' ? 'string' : Array.isArray(rule) ? 'array' : 'noSupport';
+
+    if (ruleType === 'noSupport') {
+      throw Error('no support rule');
+
+      return;
+    }
+
+    let result = target;
+
+    let nameArr = ruleType === 'string' ? rule.replace(/(\[|\]|\.)/g, ',').split(",").filter((item) => item) : rule;
+
+    for (let i = 0; i < nameArr.length; i++) {
+      if (result[nameArr[i]] !== null && result[nameArr[i]] !== undefined) {
+        result = result[nameArr[i]];
+      } else {
+        result = defaultBack;
+        break;
+      }
+    }
+
+    return result;
+
+  }
+```
 
 
 
