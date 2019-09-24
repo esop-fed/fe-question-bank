@@ -3,19 +3,19 @@
 
 ```javascript
 // example
-let getArr = [0, [0, [0, 1, 2], {a: 'a', b: 'b', c: [0, 1, 2], d: [], e: {}}, {}]]
+let arr = [0, [0, [0, 1, 2], {a: 'a', b: 'b', c: [0, 1, 2], d: [], e: {}}, {}]]
 
-let getObj = {
+let obj = {
     a: 'a',
     b: [0, [0, 1, 2], {a: 'a', b: 'b', c: [], d: {}},]
 }
 
 /**
  * @param {Object} target 遍历的数组或对象
- * @param {String|Array} rule 查询路径
+ * @param {String|Array} path 查询路径
  * @param {Any} defaultBack 自定义返回值
 */
-function get(target, rule, defaultBack) {
+function get(target, path, defaultBack) {
     ...
 }
 
@@ -30,7 +30,28 @@ console.log('get=>getObj|b[1][1] => ', get(getObj, 'b[1][1]'), get(getObj, ['b',
 ```
 ----
 ##### johninch:
+```js
+function get (source, path, defaultValue = undefined) {
+  // a[3].b -> a.3.b
+  const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.')
 
+  let result = source
+  for (const p of paths) {
+    // null 与 undefined 取属性会报错，所以使用 Object 包装一下
+    result = Object(result)[p]
+
+    if (result === undefined) {
+      return defaultValue
+    }
+  }
+  return result
+}
+
+get(res, 'gk.r8.rs.resp', undefined);
+```
+![object(undefined)](../../_media/md-images/object(undefined).png)
+
+<https://juejin.im/post/5cd938135188250f21618765>
 
 ----
 ##### febcat:
