@@ -102,6 +102,49 @@ const clone = obj => {
 
   return ret;
 }
+
+// 测试用例
+// 普通对象
+let a = {
+  b: {
+    c: []
+  },
+  d: 1,
+  e: /\w/,
+  f: null,
+  g: undefined,
+  h: "hello niannings"
+};
+
+let b = clone(a);
+
+console.log("---测试对象---");
+console.log(a, b);
+console.log("a === b: ", a === b); // false
+console.log("a.b === b.b", a.b === b.b); // false
+console.log("a.b.c === b.b.c", a.b.c === b.b.c); // false
+
+// 测试循环引用
+
+b.r = b;
+b.s = b.b;
+
+let bb = clone(b);
+
+console.log("---测试循环引用---");
+console.log(b, bb);
+console.log("b.r === bb.r: ", b.r === bb.r);
+
+// 数组
+let c = [1, a, "hello"];
+
+let d = clone(c);
+
+console.log("---测试数组---");
+console.log(c, d);
+console.log("d === c: ", d === c);
+console.log("c[1] === d[1]: ", c[1] === d[1]);
+console.log("c[1].b === d[1].b: ", c[1].b === d[1].b);
 ```
 
 ----
