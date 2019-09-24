@@ -142,6 +142,22 @@ function get(target, rule){
 ----
 ##### niannings:
 
+```js
+const execExp = (state, exp, defaultBack = undefined) => {
+  const keys = exp.split(/[[\].]/g).filter(key => key !== "");
+  const flag = keys.length;
+  let value = state;
 
+  for (let i = 0; i < flag; i++) {
+    value = value[keys[i]];
+
+    if (value === undefined) {
+        return defaultBack;
+    }
+  }
+
+  return value;
+};
+```
 ----
 ##### 最后总结：
