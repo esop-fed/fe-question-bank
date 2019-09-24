@@ -43,9 +43,7 @@ const get = (obj, path, defaultBack= undefined) => {
     }
 
     const rule = Array.isArray(path) ? path.join(',').replace(/\,/g, '.') : path
-    const preRule = rule.replace(/\[(\d+)\]/g, (match, $1, index) => {
-        return index ? '.' + $1 : $1
-    }).split('.')
+    const preRule = rule.replace(/\[(\d+)\]/g, (match, $1, index) => index ? '.' + $1 : $1).split('.')
     const nextRule = preRule.slice(1).join('.')
     const key = preRule[0]
 
