@@ -61,6 +61,48 @@ function deepClone(origin){
 ----
 ##### niannings:
 
+```js
+const getType = v =>
+  v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name.toLowerCase();
+
+const canTraverse = o => {
+  const checkSet = new Set(['array', 'object']);
+
+  return checkSet.has(getType(o));
+};
+
+const clone = obj => {
+  let ret = new obj.constructor();
+  let stack = [obj];
+  let refMap = new WeakMap();
+  let traverseObj;
+
+  refMap.set(obj, ret);
+
+  while (traverseObj = stack.pop()) {
+    let entries = Object.entries(traverseObj);
+    let len = entries.length;
+    let cur = refMap.get(traverseObj);
+
+    for (let i = 0; i < len; i++) {
+      let [k, v] = entries[i];
+
+      if(canTraverse(v) && !refMap.has(v)) {
+        cur[k] = new v.constructor();
+
+        refMap.set(v, cur[k]);
+        stack.push(v);
+      } else if (refMap.has(v)) {
+        cur[k] = refMap.get(v);
+      } else {
+        cur[k] = v;
+      }
+    }
+  }
+
+  return ret;
+}
+```
 
 ----
 ##### 最后总结：
