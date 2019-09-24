@@ -80,7 +80,7 @@ const get = (obj, path, defaultBack= undefined) => {
 ```
 ----
 ##### Caleb:
-``` javascript
+```javascript
 var IsEmptys = value => {
   if(value === undefined || value === null || typeof value === 'object' && (Object.keys(value) && Object.keys(value).length === 0 || value.length === 0)){
     return true
@@ -105,11 +105,37 @@ function get(target, rule){
   get(returnValue, formatRule);
 
 }
-
 ```
 
 ----
 ##### Xmtd:
+```js
+  function get(target, rule, defaultBack) {
+    let ruleType = typeof rule === 'string' ? 'string' : Array.isArray(rule) ? 'array' : 'noSupport';
+
+    if (ruleType === 'noSupport') {
+      throw Error('no support rule');
+
+      return;
+    }
+
+    let result = target;
+
+    let nameArr = ruleType === 'string' ? rule.replace(/(\[|\]|\.)/g, ',').split(",").filter((item) => item) : rule;
+
+    for (let i = 0; i < nameArr.length; i++) {
+      if (result[nameArr[i]] !== null && result[nameArr[i]] !== undefined) {
+        result = result[nameArr[i]];
+      } else {
+        result = defaultBack;
+        break;
+      }
+    }
+
+    return result;
+
+  }
+```
 
 
 
