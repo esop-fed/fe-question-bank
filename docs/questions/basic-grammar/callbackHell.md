@@ -3,7 +3,7 @@
 
 例如：```node```中```fs```模块的读文件```API```: ```fs.readFile(path[, options], callback)```；写文件```fs.writeFile(path[, options], callback)```。
 
-当我们要对a.txt文件进行读取，写入'hello world'，再读取b.txt并将b.txt内容追加到a.txt：  
+当我们要对a.txt文件进行读取，写入'hello world'，再读取b.txt并将b.txt内容追加到a.txt：
 **调用原生API写法如下：**
 ```js
 import * as fs from 'fs';
@@ -64,7 +64,7 @@ const writeFile = promisify(fs.writeFile);
 
         data = await readFile('b.txt');
 
-        await writeFile('a.txt', data);        
+        await writeFile('a.txt', data);
    } catch (error) {
        console.error(error);
    }
@@ -72,19 +72,44 @@ const writeFile = promisify(fs.writeFile);
 ```
 
 ----
-johninch:
+##### johninch:
 
 
 ----
-febcat:
+##### febcat:
+
+```javascript
+const promisify = (fuc) => {
+  return (file, dataBuffer) => {
+    return new Promise((resolve, reject) => {
+      if (dataBuffer) { // write
+        fuc(file, dataBuffer, err => {
+          if(err) {
+            console.log('write error', err)
+
+            throw error
+          } else resolve()
+        })
+      } else { // reade
+        fuc(file, (err, data) => {
+          if (err) {
+            console.log('read error', err)
+
+            throw error
+          } else resolve(data)
+        })
+      }
+    })
+  }
+}
+```
+
+----
+##### Caleb:
 
 
 ----
-dannisi:
-
-
-----
-Xmtd:
+##### Xmtd:
 ```js
 let promisify = function (fn) {
     return function (...args) {
@@ -102,8 +127,17 @@ let promisify = function (fn) {
 
 
 ----
-niannings:
+##### niannings:
 
+```js
+const promisify = fnWithCallback =>
+    (...args) => new Promise((resolve, reject) =>
+        fnWithCallback(
+            ...args,
+            (err, result) => err ? reject(err) : resolve(result)
+        )
+    )
+```
 
 ----
-最后总结：
+##### 最后总结：
