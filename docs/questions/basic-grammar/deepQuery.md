@@ -20,11 +20,13 @@ function get(target, rule, defaultBack) {
 }
 
 // hope
-console.log('get=>getArr|[1][2].e => ', get(getArr, '[1][2].e')) // undefined
-console.log('get=>getArr|[1][2].d => ', get(getArr, '[1][2].d')) // undefined
+console.log('get=>getArr|[1][2].d => ', get(getArr, '[1][2].d')) // []
+console.log('get=>getArr|[1][2].e => ', get(getArr, '[1][2].e')) // {}
+console.log('get=>getArr|[1][2].d => ', get(getArr, '[1][2].f')) // undefined
 console.log('get=>getArr|[1][2].c => ', get(getArr, '[1][2].c'), get(getArr, [1, 2, 'c'])) // [0, 1, 2], [0, 1, 2]
-console.log('get=>getObj|b[2].c => ', get(getObj, 'b[2].c')) // undefined
-console.log('get=>getObj|b[2].d => ', get(getObj, 'b[2].d')) // undefined
+console.log('get=>getObj|b[2].c => ', get(getObj, 'b[2].c')) // []
+console.log('get=>getObj|b[2].d => ', get(getObj, 'b[2].d')) // {}
+console.log('get=>getObj|b[2].d => ', get(getObj, 'b[2].e')) // undefined
 console.log('get=>getObj|b[1][1] => ', get(getObj, 'b[1][1]'), get(getObj, ['b', 1, 1], )) // 1, 1
 
 ```
