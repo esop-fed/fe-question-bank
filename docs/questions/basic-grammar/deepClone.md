@@ -61,6 +61,91 @@ function deepClone(origin){
 ----
 ##### niannings:
 
+```js
+const getType = v =>
+  v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name.toLowerCase();
+
+const canTraverse = o => {
+  const checkSet = new Set(['array', 'object']);
+
+  return checkSet.has(getType(o));
+};
+
+const clone = obj => {
+  let ret = new obj.constructor();
+  let stack = [obj];
+  let refMap = new WeakMap();
+  let traverseObj;
+
+  refMap.set(obj, ret);
+
+  while (traverseObj = stack.pop()) {
+    let entries = Object.entries(traverseObj);
+    let len = entries.length;
+    let cur = refMap.get(traverseObj);
+
+    for (let i = 0; i < len; i++) {
+      let [k, v] = entries[i];
+
+      if(canTraverse(v) && !refMap.has(v)) {
+        cur[k] = new v.constructor();
+
+        refMap.set(v, cur[k]);
+        stack.push(v);
+      } else if (refMap.has(v)) {
+        cur[k] = refMap.get(v);
+      } else {
+        cur[k] = v;
+      }
+    }
+  }
+
+  return ret;
+}
+
+// 测试用例
+// 普通对象
+let a = {
+  b: {
+    c: []
+  },
+  d: 1,
+  e: /\w/,
+  f: null,
+  g: undefined,
+  h: "hello niannings"
+};
+
+let b = clone(a);
+
+console.log("---测试对象---");
+console.log(a, b);
+console.log("a === b: ", a === b); // false
+console.log("a.b === b.b", a.b === b.b); // false
+console.log("a.b.c === b.b.c", a.b.c === b.b.c); // false
+
+// 测试循环引用
+
+b.r = b;
+b.s = b.b;
+
+let bb = clone(b);
+
+console.log("---测试循环引用---");
+console.log(b, bb);
+console.log("b.r === bb.r: ", b.r === bb.r);
+
+// 数组
+let c = [1, a, "hello"];
+
+let d = clone(c);
+
+console.log("---测试数组---");
+console.log(c, d);
+console.log("d === c: ", d === c);
+console.log("c[1] === d[1]: ", c[1] === d[1]);
+console.log("c[1].b === d[1].b: ", c[1].b === d[1].b);
+```
 
 ----
 ##### 最后总结：
