@@ -127,6 +127,26 @@ for(let j of flatCopy(arr)){
 
 ----
 ##### Xmtd:
+```js
+  // js
+  function flatten(target, result = []) {
+    target.forEach((item) => {
+      if (Array.isArray(item)) {
+        flatten(item, result);
+      } else {
+        result.push(item);
+      }
+    });
+
+    return result;
+  }
+  
+  // 方法
+  target.flat(Infinity);
+
+  // 类型改变了
+  target.toString().split(',');
+```
 
 
 
