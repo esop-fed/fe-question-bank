@@ -79,9 +79,6 @@ function cloneDeep(target) {
 ----
 ##### niannings:
 
-网上的深拷贝太多了，几乎如出一辙
-不一样的深拷贝，原创！
-
 ```js
 const getType = v =>
   v === undefined ? 'undefined' : v === null ? 'null' : v.constructor.name.toLowerCase();
