@@ -9,16 +9,16 @@
 ```javascript
 const deepClone = obj => {
     if (typeof obj !== 'object') {
-      console.error(`deepClone: require object, but ${typeof obj}`)
-      return
+      console.info(`deepClone: not object, is ${typeof obj}`)
+      return obj
     }
 
     if (Array.isArray(obj)) {
-      return obj.reduce((arr, item) => return arr.concat(item), [])
+      return obj.reduce((arr, item) => arr.concat(deepClone(item)), [])
     }
 
     return Object.entries(obj).filter(item => obj.hasOwnProperty(item[0])).reduce((newObj, [key, value]) => {
-      newObj[key] = value
+      newObj[key] = deepClone(value)
 
       return newObj
     }, {})
