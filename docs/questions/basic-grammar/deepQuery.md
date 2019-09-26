@@ -1,37 +1,25 @@
 
-> 实现一个方法get(target, path)，深度查询一个数组或者对象中的值(数组和对象不止一层嵌套)，当这个值为null undefined 空数组 空对象的时候默认返回undefined，如有这个值则返回这个值。参照[lodash/._get](https://www.lodashjs.com/docs/latest#_getobject-path-defaultvalue)
+> 实现lodash中的get方法：get(target, path, defaultValue)，深度查询一个数组或者对象中的值(数组和对象不止一层嵌套)，查询不到默认返回undefined。参照[lodash/._get](https://www.lodashjs.com/docs/latest#_getobject-path-defaultvalue)
 
-```javascript
+```js
 // example
-let arr = [0, [0, [0, 1, 2], {a: 'a', b: 'b', c: [0, 1, 2], d: [], e: {}}, {}]]
-
-let obj = {
-    a: 'a',
-    b: [0, [0, 1, 2], {a: 'a', b: 'b', c: [], d: {}},]
-}
-
-/**
- * @param {Object} target 遍历的数组或对象
- * @param {String|Array} path 查询路径
- * @param {Any} defaultBack 自定义返回值
-*/
-function get(target, path, defaultBack) {
-    ...
-}
-
-// hope
-console.log('get=>getArr|[1][2].d => ', get(getArr, '[1][2].d')) // []
-console.log('get=>getArr|[1][2].e => ', get(getArr, '[1][2].e')) // {}
-console.log('get=>getArr|[1][2].d => ', get(getArr, '[1][2].f')) // undefined
-console.log('get=>getArr|[1][2].c => ', get(getArr, '[1][2].c'), get(getArr, [1, 2, 'c'])) // [0, 1, 2], [0, 1, 2]
-console.log('get=>getObj|b[2].c => ', get(getObj, 'b[2].c')) // []
-console.log('get=>getObj|b[2].d => ', get(getObj, 'b[2].d')) // {}
-console.log('get=>getObj|b[2].d => ', get(getObj, 'b[2].e')) // undefined
-console.log('get=>getObj|b[1][1] => ', get(getObj, 'b[1][1]'), get(getObj, ['b', 1, 1], )) // 1, 1
+var object = { 'a': [{ 'b': { 'c': 3 } }] };
+ 
+_.get(object, 'a[0].b.c'); // => 3
+_.get(object, ['a', '0', 'b', 'c']); // => 3
+_.get(object, 'a.b.c', 'default'); // => 'default'
 
 ```
 ----
-##### johninch:
+<details>
+<summary>推荐答案:</summary>
+</details>
+
+----
+
+<details>
+<summary>johninch:</summary>
+
 ```js
 function get (source, path, defaultValue = undefined) {
   // a[3].b -> a.3.b
@@ -52,11 +40,11 @@ function get (source, path, defaultValue = undefined) {
 get(res, 'gk.r8.rs.resp', undefined);
 ```
 ![object(undefined)](../../_media/md-images/object(undefined).png)
+[相关链接]](https://juejin.im/post/5cd938135188250f21618765)
+</details>
 
-<https://juejin.im/post/5cd938135188250f21618765>
-
-----
-##### febcat:
+<details>
+<summary>febcat:</summary>
 
 ```javascript
 const get = (obj, path, defaultBack= undefined) => {
@@ -80,9 +68,12 @@ const get = (obj, path, defaultBack= undefined) => {
     }
 }
 ```
-----
-##### Caleb:
-```javascript
+</details>
+
+<details>
+<summary>Caleb:</summary>
+
+``` javascript
 var IsEmptys = value => {
   if(value === undefined || value === null || typeof value === 'object' && (Object.keys(value) && Object.keys(value).length === 0 || value.length === 0)){
     return true
@@ -108,9 +99,11 @@ function get(target, rule){
 
 }
 ```
+</details>
 
-----
-##### Xmtd:
+<details>
+<summary>Xmtd:</summary>
+
 ```js
   function get(target, rule, defaultBack) {
     let ruleType = typeof rule === 'string' ? 'string' : Array.isArray(rule) ? 'array' : 'noSupport';
@@ -138,11 +131,10 @@ function get(target, rule){
 
   }
 ```
+</details>
 
-
-
-----
-##### niannings:
+<details>
+<summary>niannings:</summary>
 
 ```js
 const execExp = (state, exp, defaultBack = undefined) => {
@@ -154,12 +146,11 @@ const execExp = (state, exp, defaultBack = undefined) => {
     value = value[keys[i]];
 
     if (value === undefined) {
-        return defaultBack;
+      return defaultBack;
     }
   }
 
   return value;
 };
 ```
-----
-##### 最后总结：
+</details>

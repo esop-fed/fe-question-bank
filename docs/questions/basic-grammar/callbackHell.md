@@ -1,6 +1,8 @@
 
 > 解决回调地狱：实现一个函数，可以将异步函数转化成promise函数。
 
+<details>
+<summary>例子</summary>
 例如：```node```中```fs```模块的读文件```API```: ```fs.readFile(path[, options], callback)```；写文件```fs.writeFile(path[, options], callback)```。
 
 当我们要对a.txt文件进行读取，写入'hello world'，再读取b.txt并将b.txt内容追加到a.txt：
@@ -70,13 +72,28 @@ const writeFile = promisify(fs.writeFile);
    }
 })()
 ```
+</details>
 
 ----
-##### johninch:
 
+<details>
+<summary>推荐答案:</summary>
+
+```js
+const promisify = fnWithCallback =>
+    (...args) => new Promise((resolve, reject) =>
+        fnWithCallback(
+            ...args,
+            (err, result) => err ? reject(err) : resolve(result)
+        )
+    )
+```
+</details>
 
 ----
-##### febcat:
+
+<details>
+<summary>febcat:</summary>
 
 ```javascript
 const promisify = fuc => (file, dataBuffer) =>
@@ -101,12 +118,9 @@ const promisify = fuc => (file, dataBuffer) =>
   )
 ```
 
-----
-##### Caleb:
+<details>
+<summary>Xmtd:</summary>
 
-
-----
-##### Xmtd:
 ```js
 let promisify = function (fn) {
     return function (...args) {
@@ -122,9 +136,10 @@ let promisify = function (fn) {
 };
 ```
 
+</details>
 
-----
-##### niannings:
+<details>
+<summary>niannings:</summary>
 
 ```js
 const promisify = fnWithCallback =>
@@ -135,6 +150,4 @@ const promisify = fnWithCallback =>
         )
     )
 ```
-
-----
-##### 最后总结：
+</details>

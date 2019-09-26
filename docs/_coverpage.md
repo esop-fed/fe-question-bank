@@ -9,5 +9,5 @@
 * 初衷：希望促进团队成员学习讨论，达成技术共识，推动技术进步
 <!-- * 纠偏：Interview并非本项目的目标，面试水平只是技术提升后的副产品 -->
 
-[GitHub](https://github.com/esop-fed/Question-Bank)
+[GitHub](https://github.com/esop-fed/fe-question-bank)
 [Get Started](#quick-start)

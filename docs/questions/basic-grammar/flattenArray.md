@@ -2,7 +2,14 @@
 > 数组扁平化： [1, [2, [3, 4]]] =>> [1, 2, 3, 4]
 
 ----
-##### johninch:
+<details>
+<summary>推荐答案:</summary>
+</details>
+
+----
+<details>
+<summary>johninch:</summary>
+
 >> 方法一：常规递归：
 
 ```js
@@ -68,8 +75,10 @@ flatten([1, [2, [3, 4]]])
 // toString也可以替换成join方法，也可以达到隐式类型转换的目的
 ```
 
-----
-##### febcat:
+</details>
+
+<details>
+<summary>febcat:</summary>
 
 ```javascript
 const flattenArray = array => {
@@ -87,9 +96,10 @@ const flattenArray = array => {
 }
 
 ```
+</details>
 
-----
-##### Caleb:
+<details>
+<summary>Caleb:</summary>
 
 * 1. 使用ES6 flat方法
 
@@ -124,9 +134,9 @@ for(let j of flatCopy(arr)){
 }
 
 ```
+<details>
+<summary>Xmtd:</summary>
 
-----
-##### Xmtd:
 ```js
   // js
   function flatten(target, result = []) {
@@ -147,12 +157,4 @@ for(let j of flatCopy(arr)){
   // 类型改变了
   target.toString().split(',');
 ```
-
-
-
-----
-##### niannings:
-
-
-----
-##### 最后总结：
+<details>

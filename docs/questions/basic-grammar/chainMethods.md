@@ -3,7 +3,14 @@
 > 例如：$('div').addClass('add-class')
 
 ----
-##### johninch:
+<details>
+<summary>推荐答案:</summary>
+</details>
+
+----
+<details>
+<summary>johninch:</summary>
+
 - 原理：其实链式调用就是让一个类的每个方法都返回this值，从而达到链式调用；
 - 步骤：首先创建一个构造函数，把那些元素作为数组保存在一个实例属性中，并把所有定义在构造器函数上的prototype属性指向对象中的方法都返回用以调用方法的那个实例的引用，那么它就具有了进行链式调用的能力。
 
@@ -63,10 +70,12 @@ function add(num){
     return tempFun
 }
 ```
-https://segmentfault.com/q/1010000004342477
+[相关链接](https://segmentfault.com/q/1010000004342477)
 
-----
-##### febcat:
+</details>
+
+<details>
+<summary>febcat:</summary>
 
 ```javascript
 class Chain {
@@ -123,9 +132,10 @@ class Chain {
   console.log('chain=> color ', $('div').color())
 
 ```
+</details>
 
-----
-##### Caleb:
+<details>
+<summary>Caleb:</summary>
 
 ``` javascript
 var $ = function(id) {
@@ -149,10 +159,10 @@ $2.prototype = {
 $('div').addClass('ppp')
 
 ```
+</details>
 
-
-----
-##### Xmtd:
+<details>
+<summary>Xmtd:</summary>
 
 ```js
   let jq = function (selector) {
@@ -182,11 +192,10 @@ $('div').addClass('ppp')
 
   // jq('#test').on('click', function () {}).attr('title', '1111')
 ```
+</details>
 
-
-
-----
-##### niannings:
+<details>
+<summary>niannings:</summary>
 
 ```js
 /**
@@ -221,6 +230,4 @@ const a = {
 
 chainify(a).foo().bar(100)
 ```
-
-----
-##### 最后总结：
+</details>
