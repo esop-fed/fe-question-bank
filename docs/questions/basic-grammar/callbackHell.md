@@ -117,6 +117,7 @@ const promisify = fuc => (file, dataBuffer) =>
     }
   )
 ```
+</details>
 
 <details>
 <summary>Xmtd:</summary>

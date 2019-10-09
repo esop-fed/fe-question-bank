@@ -13,17 +13,12 @@ _.get(object, 'a.b.c', 'default'); // => 'default'
 ----
 <details>
 <summary>推荐答案:</summary>
-</details>
-
-----
-
-<details>
-<summary>johninch:</summary>
 
 ```js
 function get (source, path, defaultValue = undefined) {
   // a[3].b -> a.3.b
-  const paths = path.replace(/\[(\d+)\]/g, '.$1').split('.')
+  const paths = path.replace(/\[(\S+)\]/g, '.$1').split('.').filter(key => key)
+  // const paths = path.split(/[[\].]/g).filter(key => key); // 这里可以直接用正则 [[\].] 或匹配
 
   let result = source
   for (const p of paths) {
@@ -37,7 +32,36 @@ function get (source, path, defaultValue = undefined) {
   return result
 }
 
-get(res, 'gk.r8.rs.resp', undefined);
+get(object, 'a[3].b', undefined);
+```
+![object(undefined)](../../_media/md-images/object(undefined).png)
+[相关链接]](https://juejin.im/post/5cd938135188250f21618765)
+</details>
+
+----
+
+<details>
+<summary>johninch:</summary>
+
+```js
+function get (source, path, defaultValue = undefined) {
+  // a[3].b -> a.3.b
+  const paths = path.replace(/\[(\S+)\]/g, '.$1').split('.').filter(key => key)
+  // const paths = path.split(/[[\].]/g).filter(key => key); // 这里可以直接用正则 [[\].] 或匹配
+
+  let result = source
+  for (const p of paths) {
+    // null 与 undefined 取属性会报错，所以使用 Object 包装一下
+    result = Object(result)[p]
+
+    if (result === undefined) {
+      return defaultValue
+    }
+  }
+  return result
+}
+
+get(object, 'a[3].b', undefined);
 ```
 ![object(undefined)](../../_media/md-images/object(undefined).png)
 [相关链接]](https://juejin.im/post/5cd938135188250f21618765)

@@ -174,10 +174,6 @@ module.exports = {
 ----
 
 <details>
-<summary>johninch:</summary>
-</details>
-
-<details>
 <summary>febcat:</summary>
 
 ```javascript
