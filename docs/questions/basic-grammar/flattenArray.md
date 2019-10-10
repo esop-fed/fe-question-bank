@@ -70,6 +70,9 @@ function flatten(arr) {
 function flatten(arr) {
     while(arr.some(item => Array.isArray(item))) {
         arr = [].concat(...arr)
+        // 也可以利用apply方法 arr = [123].concat.apply([], arr)
+        // 由于 apply 的第二个参数传入的是[a, b, c],所以每次也只能展开一层
+        // 前面的[123]是随便写的，只要是数组即可，apply的第一个参数[]借用了[123]的concat方法，才是真正的方法调用者
     }
     return arr
 }
