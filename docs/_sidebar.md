@@ -180,7 +180,7 @@
     - [列举eslint的哪些rules是可以通过--fix命令修复的？](/questions/basic-grammar/)
 
 - **待分类**
-    - [什么是PWA？](/questions/cross-platform/)
+    - [什么是PWA？](/questions/cross-platform/wanted-pwa)
     - [什么是service worker？什么是web worker？](/questions/cross-platform/pwa-and-service-worker)
     - [pwa和react-native、flutter、weex等有何区别？各自优势是什么？](/questions/cross-platform/)
     - [prefetch和preload是指什么？二者的区别？](/questions/basic-grammar/)
